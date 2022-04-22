@@ -6,4 +6,4 @@
 
 `docker run --rm --name postgresql-docker -e POSTGRES_PASSWORD=netology -v my_data:/var/lib/postgresql/data -p 5432:5432 -d postgres:13`
 
-![](https://github.com/melnik-evgeniy/05-virt-04-docker-compose/blob/master/1.jpg?raw=true)
+![](scrin 2022-04-22 в 17.34.49.jpg?raw=true)
