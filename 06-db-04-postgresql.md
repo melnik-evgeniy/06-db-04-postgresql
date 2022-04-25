@@ -9,21 +9,21 @@
 ![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/61676bf3c063715032400749c8f30bc3a5671a4e/1.jpg?raw=true)
 
 Подключитесь к БД PostgreSQL используя `psql`.
-![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/61676bf3c063715032400749c8f30bc3a5671a4e/2.jpg?raw=true)
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/2.jpg?raw=true)
 
 Воспользуйтесь командой `\?` для вывода подсказки по имеющимся в `psql` управляющим командам.
 
 **Найдите и приведите** управляющие команды для:
 - вывода списка БД
-![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/61676bf3c063715032400749c8f30bc3a5671a4e/3.jpg?raw=true)
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/3.jpg?raw=true)
 
 - подключения к БД
 `postgres-# \conninfo
 You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".`
 - вывода списка таблиц
-![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/61676bf3c063715032400749c8f30bc3a5671a4e/4.jpg?raw=true)
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/4.jpg?raw=true)
 - вывода описания содержимого таблиц
-![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/61676bf3c063715032400749c8f30bc3a5671a4e/5.jpg?raw=true)
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/5.jpg?raw=true)
 - выхода из psql
 `postgres-# \q
 root@71fa062f1696:/# `
