@@ -4,7 +4,9 @@
 
 Используя docker поднимите инстанс PostgreSQL (версию 13). Данные БД сохраните в volume.
 
-`docker run --rm --name postgresql-docker -e POSTGRES_PASSWORD=netology -v my_data:/var/lib/postgresql/data -p 5432:5432 -d postgres:13`
+```bash
+docker run --rm --name postgresql-docker -e POSTGRES_PASSWORD=netology -v my_data:/var/lib/postgresql/data -p 5432:5432 -d postgres:13
+```
 
 ![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/61676bf3c063715032400749c8f30bc3a5671a4e/1.jpg?raw=true)
 
@@ -18,12 +20,21 @@
 ![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/3.jpg?raw=true)
 
 - подключения к БД
-`postgres-# \conninfo
-You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".`
+```bash
+postgres-# \conninfo
+You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".
+```
 - вывода списка таблиц
 ![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/4.jpg?raw=true)
 - вывода описания содержимого таблиц
 ![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/5.jpg?raw=true)
 - выхода из psql
-`postgres-# \q
-root@71fa062f1696:/# `
+```bash
+postgres-# \q
+root@71fa062f1696:/# 
+```
+
+#### Задача 2
+
+Используя `psql` создайте БД `test_database`.
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/6.jpg?raw=true)
