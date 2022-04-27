@@ -42,3 +42,15 @@ root@71fa062f1696:/#
 Изучите [бэкап БД](https://github.com/netology-code/virt-homeworks/tree/master/06-db-04-postgresql/test_data).
 
 Восстановите бэкап БД в `test_database`.
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/93e0c9f378c25cd826ee25450ca5fa8ac5e87e29/7.jpg?raw=true)
+Перейдите в управляющую консоль `psql` внутри контейнера.
+```bash
+root@71fa062f1696:/# psql -U postgres
+psql (13.6 (Debian 13.6-1.pgdg110+1))
+Type "help" for help.
+
+postgres=# 
+```
+Подключитесь к восстановленной БД и проведите операцию ANALYZE для сбора статистики по таблице.
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/93e0c9f378c25cd826ee25450ca5fa8ac5e87e29/7.jpg?raw=true)
+```bash
