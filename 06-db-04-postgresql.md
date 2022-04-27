@@ -100,3 +100,16 @@ test_database=# \dt
 CREATE RULE orders_insert_to_more AS ON INSERT TO orders WHERE ( price > 499 ) DO INSTEAD INSERT INTO orders_more_499_price VALUES (NEW.*);
 CREATE RULE orders_insert_to_less AS ON INSERT TO orders WHERE ( price <= 499 ) DO INSTEAD INSERT INTO orders_less_499_price VALUES (NEW.*);
 ```
+#### Задача 4
+
+Используя утилиту `pg_dump` создайте бекап БД `test_database`.
+
+```bash
+test_database=# export PGPASSWORD=netology && pg_dump -h localhost -U postgres test_database > /tmp/test_database_backup.sql
+```
+Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца `title` для таблиц `test_database`?
+
+Использовать UNIQUE
+```bash
+title character varying(80) NOT NULL UNIQUE,
+```
