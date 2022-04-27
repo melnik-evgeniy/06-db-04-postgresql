@@ -52,5 +52,51 @@ Type "help" for help.
 postgres=# 
 ```
 Подключитесь к восстановленной БД и проведите операцию ANALYZE для сбора статистики по таблице.
-![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/93e0c9f378c25cd826ee25450ca5fa8ac5e87e29/7.jpg?raw=true)
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/da20e85959bc2407a06039c1146efca9c0579aa0/8.jpg?raw=true)
+Используя таблицу [pg_stats](https://postgrespro.ru/docs/postgresql/12/view-pg-stats), найдите столбец таблицы `orders` 
+с наибольшим средним значением размера элементов в байтах.
+
 ```bash
+test_database=# SELECT avg_width FROM pg_stats WHERE tablename='orders';
+ avg_width
+-----------
+         4
+        16
+         4
+(3 rows)
+```
+
+#### Задача 3
+
+Архитектор и администратор БД выяснили, что ваша таблица orders разрослась до невиданных размеров и
+поиск по ней занимает долгое время. Вам, как успешному выпускнику курсов DevOps в нетологии предложили
+провести разбиение таблицы на 2 (шардировать на orders_1 - price>499 и orders_2 - price<=499).
+
+Предложите SQL-транзакцию для проведения данной операции.
+```pgsql
+test_database=# CREATE TABLE orders_more_499_price (CHECK (price > 499)) INHERITS (orders);
+CREATE TABLE
+test_database=# INSERT INTO orders_more_499_price SELECT * FROM orders WHERE price > 499;
+INSERT 0 3
+test_database=# CREATE TABLE orders_less_499_price (CHECK (price <= 499)) INHERITS (orders);
+CREATE TABLE
+test_database=# INSERT INTO orders_LESS_499_price SELECT * FROM orders WHERE price <= 499;
+INSERT 0 5
+test_database=# DELETE FROM ONLY orders;
+DELETE 8
+test_database=# 
+test_database=# \dt
+                 List of relations
+ Schema |         Name          | Type  |  Owner   
+--------+-----------------------+-------+----------
+ public | orders                | table | postgres
+ public | orders_less_499_price | table | postgres
+ public | orders_more_499_price | table | postgres
+(3 rows)
+```
+Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?
+Да, прописав правила, например:
+```pgsql
+CREATE RULE orders_insert_to_more AS ON INSERT TO orders WHERE ( price > 499 ) DO INSTEAD INSERT INTO orders_more_499_price VALUES (NEW.*);
+CREATE RULE orders_insert_to_less AS ON INSERT TO orders WHERE ( price <= 499 ) DO INSTEAD INSERT INTO orders_less_499_price VALUES (NEW.*);
+```
