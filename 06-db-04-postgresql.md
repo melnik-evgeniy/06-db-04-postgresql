@@ -37,4 +37,8 @@ root@71fa062f1696:/#
 #### Задача 2
 
 Используя `psql` создайте БД `test_database`.
-![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/0d47e6bc441e348a77f30f58af88f8412fe81f1d/6.jpg?raw=true)
+
+![](https://github.com/melnik-evgeniy/06-db-04-postgresql/blob/071426a658d0ae07150a78caf0db7c4ecd233de8/6.jpg?raw=true)
+Изучите [бэкап БД](https://github.com/netology-code/virt-homeworks/tree/master/06-db-04-postgresql/test_data).
+
+Восстановите бэкап БД в `test_database`.
